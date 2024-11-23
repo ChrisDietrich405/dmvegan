@@ -3,12 +3,21 @@ import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 
-export default function LoginScreen() {
+export default function RecoverPassword() {
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const [secureText, setSecureText] = useState(true);
 
 	const navigation = useNavigation();
+
+	const handleResetPassword = () => {
+		fetch("http://localhost:3001/v1/api/users", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ email }),
+		});
+	};
 
 	const styles = StyleSheet.create({
 		container: {
@@ -64,9 +73,9 @@ export default function LoginScreen() {
 				resizeMode="cover"
 				source={require("../../assets/images/logo2.png")}
 			/>
-			<Text style={styles.loginText}>Login</Text>
+			<Text style={styles.loginText}>Recover Password</Text>
 			<Text style={styles.loginSubText}>
-				Add your email and password in order to sign in
+				Add your email in order to recover your password
 			</Text>
 
 			<Input
@@ -77,51 +86,13 @@ export default function LoginScreen() {
 				keyboardType="email-address"
 				inputStyle={{ fontSize: 12 }}
 			/>
-			<Input
-				placeholder="Password"
-				rightIcon={
-					<Icon
-						name={secureText ? "visibility-off" : "visibility"}
-						onPress={() => setSecureText(!secureText)}
-					/>
-				}
-				value={password}
-				onChangeText={setPassword}
-				secureTextEntry={secureText}
-				inputStyle={{ fontSize: 12 }}
-			/>
-			<TouchableOpacity>
-				<Text
-					onPress={() => navigation.navigate("recover-password")}
-					style={styles.forgotPasswordText}
-				>
-					Forgot Password
-				</Text>
-			</TouchableOpacity>
-			<View style={styles.checkboxContainer}>
-				<CheckBox
-					checked={false}
-					disabled
-					iconType="material-community"
-					checkedIcon="checkbox-outline"
-					uncheckedIcon="checkbox-blank-outline"
-				/>
-				<Text style={styles.text}>Remember password</Text>
-			</View>
 
 			<Button
 				titleStyle={{ fontSize: 16 }}
-				title="Login"
+				title="Send me an email"
 				onPress={() => {
-					// Handle login
+					handleResetPassword();
 				}}
-				buttonStyle={styles.button}
-			/>
-
-			<Button
-				titleStyle={{ fontSize: 16 }}
-				title="Create Account"
-				onPress={() => navigation.navigate("create-account")}
 				buttonStyle={styles.button}
 			/>
 		</View>
