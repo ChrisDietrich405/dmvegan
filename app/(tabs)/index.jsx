@@ -10,6 +10,51 @@ export default function LoginScreen() {
 
 	const navigation = useNavigation();
 
+	const handleLogin = async () => {
+		// setIsLoading(true);
+
+		// User data to send in the request body
+		const userData = {
+			email,
+			password,
+		};
+
+		try {
+			// Make the API request to authenticate the user
+			const response = await fetch("http://192.168.1.163:3001/v1/api/auth", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(userData),
+			});
+			console.log("RESPONSE", response);
+
+			// Parse the response JSON
+			const data = await response.json();
+
+			// Check if the login was successful
+			if (response.ok) {
+				alert("hello");
+				// If successful, navigate to the Home screen
+				navigation.navigate("home");
+			} else {
+				// If failed, show an error message
+				// Alert.alert(
+				// 	"Login Failed",
+				// 	data.message || "Invalid email or password."
+				// );
+				alert("login failed");
+			}
+		} catch (error) {
+			// Handle network or other errors
+			// Alert.alert("Error", "Something went wrong. Please try again later.");
+			alert("bad");
+		}
+
+		// setIsLoading(false);
+	};
+
 	const styles = StyleSheet.create({
 		container: {
 			flex: 1,
@@ -112,9 +157,7 @@ export default function LoginScreen() {
 			<Button
 				titleStyle={{ fontSize: 16 }}
 				title="Login"
-				onPress={() => {
-					// Handle login
-				}}
+				onPress={handleLogin}
 				buttonStyle={styles.button}
 			/>
 

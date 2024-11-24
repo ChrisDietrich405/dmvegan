@@ -1,25 +1,21 @@
-import {
-	LightTheme,
-	DefaultTheme,
-	ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 const CustomDefaultTheme = {
-	...DefaultTheme,
+	dark: false,
 	colors: {
-		...DefaultTheme.colors,
-		background: "white", // Set the default background to white
+		primary: "blue",
+		background: "white",
+		card: "white",
+		text: "black",
+		border: "gray",
+		notification: "red",
 	},
 };
 
@@ -40,14 +36,15 @@ export default function RootLayout() {
 	}
 
 	return (
-		<ThemeProvider
-			value={colorScheme === "light" ? LightTheme : CustomDefaultTheme}
+		<Stack
+			screenOptions={{
+				headerShown: false,
+				theme:
+					colorScheme === "light" ? CustomDefaultTheme : CustomDefaultTheme,
+			}}
 		>
-			<Stack>
-				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-				<Stack.Screen name="+not-found" />
-			</Stack>
-			{/* <StatusBar style="auto" /> */}
-		</ThemeProvider>
+			<Stack.Screen name="(tabs)" />
+			<Stack.Screen name="not-found" />
+		</Stack>
 	);
 }
