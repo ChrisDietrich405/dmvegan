@@ -30,7 +30,7 @@ export default function TabLayout() {
 			}}
 		>
 			<Tabs.Screen
-				name="splash"
+				name="index"
 				options={{
 					title: "Splash",
 					tabBarIcon: ({ color }) => (
@@ -39,7 +39,7 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="index"
+				name="splash"
 				options={{
 					title: "Home",
 					tabBarIcon: ({ color }) => (
