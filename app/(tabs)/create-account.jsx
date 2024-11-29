@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
 
-export default function CreateAccountScreen({ navigation }) {
+export default function CreateAccountScreen() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [secureText, setSecureText] = useState(true);
+
+	const navigation = useNavigation();
 
 	const [checked, setChecked] = React.useState(true);
 	const toggleCheckbox = () => setChecked(!checked);
@@ -170,12 +173,17 @@ export default function CreateAccountScreen({ navigation }) {
 				textStyle={{ color: "#fff" }}
 				titleStyle={{ fontSize: 16 }}
 			/>
-
-			<TouchableOpacity onPress={() => navigation.navigate("index")}>
+			<Button
+				titleStyle={{ fontSize: 16 }}
+				title="Sign in with your Apple account"
+				onPress={() => navigation.navigate("index")}
+				buttonStyle={styles.button}
+			/>
+			{/* <TouchableOpacity onPress={() => navigation.navigate("index")}>
 				<Text style={{ textAlign: "center", color: "#007bff", marginTop: 10 }}>
 					Back to Login
 				</Text>
-			</TouchableOpacity>
+			</TouchableOpacity> */}
 		</View>
 	);
 }
