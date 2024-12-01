@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-// import {
-// 	GoogleSignin,
-// 	GoogleSigninButton,
-// 	statusCodes,
-// } from "@react-native-google-signin/google-signin";
+import {
+	GoogleSignin,
+	GoogleSigninButton,
+	statusCodes,
+} from "@react-native-google-signin/google-signin";
 
-// import { WEB_CLIENT_ID, IOS_CLIENT_ID } from "../keys/index";
+import { WEB_CLIENT_ID, IOS_CLIENT_ID } from "../keys/index";
 
-// GoogleSignin.configure({
-// 	webClientId: WEB_CLIENT_ID, // client ID of type WEB for your server. Required to get the `idToken` on the user object, and for offline access.
-// 	scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
-// 	offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-// 	forceCodeForRefreshToken: false, // [Android] related to `serverAuthCode`, read the docs link below *.
-// 	iosClientId: IOS_CLIENT_ID, // [iOS] if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
-// });
+GoogleSignin.configure({
+	webClientId: WEB_CLIENT_ID, // client ID of type WEB for your server. Required to get the `idToken` on the user object, and for offline access.
+	scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
+	offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
+	forceCodeForRefreshToken: false, // [Android] related to `serverAuthCode`, read the docs link below *.
+	iosClientId: IOS_CLIENT_ID, // [iOS] if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
+});
 
 export default function LoginScreen() {
 	const [email, setEmail] = useState("");
@@ -120,6 +120,10 @@ export default function LoginScreen() {
 			// Space between the checkbox and the text
 			fontSize: 8,
 		},
+		h1_practice: {
+			height: 200,
+			background: "purple",
+		},
 	});
 
 	return (
@@ -129,13 +133,13 @@ export default function LoginScreen() {
 				resizeMode="cover"
 				source={require("../../assets/images/logo2.png")}
 			/>
-			<Icon name="google" size={30} color="#000" />
-			{/* <GoogleSigninButton
+			{/* <Icon name="google" size={30} color="#000" /> */}
+			<GoogleSigninButton
 				size={GoogleSigninButton.Size.Wide}
 				color={GoogleSigninButton.Color.Dark}
 			>
-				<h1>Hello</h1>
-			</GoogleSigninButton> */}
+				<h1 style={styles.h1_practice}>Hello</h1>
+			</GoogleSigninButton>
 
 			<Button
 				title="Baltimore"
