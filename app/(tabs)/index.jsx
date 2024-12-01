@@ -120,10 +120,6 @@ export default function LoginScreen() {
 			// Space between the checkbox and the text
 			fontSize: 8,
 		},
-		h1_practice: {
-			height: 200,
-			background: "purple",
-		},
 	});
 
 	return (
@@ -137,9 +133,7 @@ export default function LoginScreen() {
 			<GoogleSigninButton
 				size={GoogleSigninButton.Size.Wide}
 				color={GoogleSigninButton.Color.Dark}
-			>
-				<h1 style={styles.h1_practice}>Hello</h1>
-			</GoogleSigninButton>
+			/>
 
 			<Button
 				title="Baltimore"
