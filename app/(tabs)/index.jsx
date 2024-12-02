@@ -1,3 +1,11 @@
+// For adding Apple SSO in IOS I'm trying to run the app using EAS, but running the command eas build --platform ios
+// I get an error eas.json is not valid.
+//- "build.ios.production" is not allowed
+//- "build.android.production" is not allowed
+
+// For adding Google SSO in Android I'm trying to use Android Studio, but the Google button won't show up
+// you can't run Google SSO only in expo. I'm supposed to run npx expo prebuild --clean then npx expo run:ios
+
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
