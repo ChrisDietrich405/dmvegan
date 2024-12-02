@@ -5,6 +5,7 @@
 
 // For adding Google SSO in Android I'm trying to use Android Studio, but the Google button won't show up
 // you can't run Google SSO only in expo. I'm supposed to run npx expo prebuild --clean then npx expo run:ios
+// then I get the same error as above
 
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
@@ -222,6 +223,12 @@ export default function LoginScreen() {
 				titleStyle={{ fontSize: 16 }}
 				title="Create account"
 				onPress={() => navigation.navigate("create-account")}
+				buttonStyle={styles.button}
+			/>
+			<Button
+				titleStyle={{ fontSize: 16 }}
+				title="Add event"
+				onPress={() => navigation.navigate("add-event")}
 				buttonStyle={styles.button}
 			/>
 		</View>

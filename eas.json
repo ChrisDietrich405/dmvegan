@@ -1,13 +1,11 @@
 {
 	"build": {
-		"ios": {
-			"production": {
+		"production": {
+			"ios": {
 				"distribution": "store",
 				"buildType": "release"
-			}
-		},
-		"android": {
-			"production": {
+			},
+			"android": {
 				"buildType": "apk"
 			}
 		}
