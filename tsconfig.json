@@ -12,6 +12,7 @@
 		".expo/types/**/*.ts",
 		"expo-env.d.ts",
 		"app/(tabs)/create-account.jsx",
+		"app/(tabs)/allow-geolocation.jsx",
 		"app/(tabs)/add-event.jsx",
 		"app/(tabs)/index.jsx",
 		"app/+not-found.jsx",

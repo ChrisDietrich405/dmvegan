@@ -5,10 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function CreateAccountScreen() {
 	const [nameOfEvent, setNameOfEvent] = useState("");
+	const [address, setAddress] = useState("");
 	const [date, setDate] = useState("");
-	// const [password, setPassword] = useState("");
-	// const [confirmPassword, setConfirmPassword] = useState("");
-	// const [secureText, setSecureText] = useState(true);
+	const [time, setTime] = useState("");
+	const [description, setDescription] = useState("");
+	const [url, setUrl] = useState("");
+	const [secureText, setSecureText] = useState(true);
 
 	const navigation = useNavigation();
 
@@ -23,7 +25,11 @@ export default function CreateAccountScreen() {
 
 		const eventData = {
 			nameOfEvent,
+			address,
 			date,
+			time,
+			description,
+			url,
 		};
 
 		try {
@@ -117,6 +123,19 @@ export default function CreateAccountScreen() {
 					padding: 1, // Adjust padding as needed
 				}}
 			/>
+			<Input
+				placeholder="Address"
+				rightIcon={
+					<Icon
+						name={secureText ? "visibility-off" : "visibility"}
+						onPress={() => setSecureText(!secureText)}
+					/>
+				}
+				value={address}
+				onChangeText={setAddress}
+				secureTextEntry={secureText}
+				inputStyle={{ fontSize: 12 }}
+			/>
 
 			<Input
 				placeholder="Date"
@@ -126,28 +145,13 @@ export default function CreateAccountScreen() {
 				inputStyle={{ fontSize: 12 }}
 				containerStyle={{ margin: 1 }}
 			/>
-			{/* <Input
+			<Input
 				placeholder="Time"
-				value={email}
-				onChangeText={setEmail}
+				value={time}
+				onChangeText={setTime}
 				autoCapitalize="none"
-				keyboardType="email-address"
 				inputStyle={{ fontSize: 12 }}
 				containerStyle={{ margin: 1 }}
-			/>
-
-			<Input
-				placeholder="Address"
-				rightIcon={
-					<Icon
-						name={secureText ? "visibility-off" : "visibility"}
-						onPress={() => setSecureText(!secureText)}
-					/>
-				}
-				value={password}
-				onChangeText={setPassword}
-				secureTextEntry={secureText}
-				inputStyle={{ fontSize: 12 }}
 			/>
 			<Input
 				placeholder="Description"
@@ -157,11 +161,27 @@ export default function CreateAccountScreen() {
 						onPress={() => setSecureText(!secureText)}
 					/>
 				}
-				value={confirmPassword}
-				onChangeText={setConfirmPassword}
+				value={description}
+				onChangeText={setDescription}
 				secureTextEntry={secureText}
 				inputStyle={{ fontSize: 12 }}
 			/>
+			<Input
+				placeholder="Event URL"
+				rightIcon={
+					<Icon
+						name={secureText ? "visibility-off" : "visibility"}
+						onPress={() => setSecureText(!secureText)}
+					/>
+				}
+				value={url}
+				onChangeText={setUrl}
+				secureTextEntry={secureText}
+				inputStyle={{ fontSize: 12 }}
+			/>
+			{/*
+			
+			
 
 			<Input
 				placeholder="Event URL"

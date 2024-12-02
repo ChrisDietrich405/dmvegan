@@ -7,6 +7,8 @@
 // you can't run Google SSO only in expo. I'm supposed to run npx expo prebuild --clean then npx expo run:ios
 // then I get the same error as above
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
