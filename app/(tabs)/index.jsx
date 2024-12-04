@@ -9,6 +9,22 @@
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
 
+// To start the Android emulator
+// cd ~/Android/Sdk/emulator
+// ./emulator -avd Medium_Phone_API_35
+//npm run android - it builds a new apk file and also updates any changes I made and then runs the app in the emulator
+//https://console.cloud.google.com/welcome?_gl=1*9p20w8*_up*MQ..&gclid=CjwKCAiA9bq6BhAKEiwAH6bqoAO6rAOOXBEcSKgKi4KUCXwwI5eQjANCTicRj5KDnauuo-tCfV1kShoCCmoQAvD_BwE&inv=1&invt=AbjLAg&project=dmvegans-443020
+
+// gradle
+// Copy code
+// apply plugin: 'com.google.gms.google-services'
+// 5. Rebuild the Application
+// Once everything is set up, rebuild your app to ensure the native binary is updated with the new configuration.
+
+// bash
+// Copy code
+// npm run android
+
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
@@ -19,7 +35,11 @@ import {
 	statusCodes,
 } from "@react-native-google-signin/google-signin";
 
-import { WEB_CLIENT_ID, IOS_CLIENT_ID } from "../keys/index";
+import {
+	WEB_CLIENT_ID,
+	IOS_CLIENT_ID,
+	ANDROID_CLIENT_ID,
+} from "../keys/index.js";
 
 GoogleSignin.configure({
 	webClientId: WEB_CLIENT_ID, // client ID of type WEB for your server. Required to get the `idToken` on the user object, and for offline access.
@@ -27,6 +47,7 @@ GoogleSignin.configure({
 	offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
 	forceCodeForRefreshToken: false, // [Android] related to `serverAuthCode`, read the docs link below *.
 	iosClientId: IOS_CLIENT_ID, // [iOS] if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
+	// androidClientId: ANDROID_CLIENT_ID,
 });
 
 export default function LoginScreen() {
@@ -79,6 +100,37 @@ export default function LoginScreen() {
 		}
 
 		// setIsLoading(false);
+	};
+
+	// import statusCodes along with GoogleSignin
+
+	// Somewhere in your code
+	const signIn = async () => {
+		// try {
+		//   await GoogleSignin.hasPlayServices();
+		const response = await GoogleSignin.signIn();
+		console.log("SHOE", response);
+		//   if (isSuccessResponse(response)) {
+		// 	setState({ userInfo: response.data });
+		//   } else {
+		// sign in was cancelled by user
+		//   }
+		// } catch (error) {
+		//   if (isErrorWithCode(error)) {
+		// 	switch (error.code) {
+		// 	  case statusCodes.IN_PROGRESS:
+		// 		// operation (eg. sign in) already in progress
+		// 		break;
+		// 	  case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+		// 		// Android only, play services not available or outdated
+		// 		break;
+		// 	  default:
+		// 	  // some other error happened
+		// 	}
+		//   } else {
+		// 	// an error that's not related to google sign in occurred
+		//   }
+		// }
 	};
 
 	const styles = StyleSheet.create({
@@ -144,7 +196,9 @@ export default function LoginScreen() {
 			<GoogleSigninButton
 				size={GoogleSigninButton.Size.Wide}
 				color={GoogleSigninButton.Color.Dark}
+				onPress={signIn()}
 			/>
+			<Text>shoe</Text>
 
 			<Button
 				title="Baltimore"
@@ -164,6 +218,9 @@ export default function LoginScreen() {
 				// Add margin to the left of the icon (adjust as needed)
 			/>
 
+			<Text style={styles.loginSubText}>
+				An app to notify you of local vegan catering/popup events
+			</Text>
 			<Text style={styles.loginSubText}>
 				An app to notify you of local vegan catering/popup events
 			</Text>
@@ -210,7 +267,7 @@ export default function LoginScreen() {
 
 			<Button
 				titleStyle={{ fontSize: 16 }}
-				title="Sign in with your Google account"
+				title="Sign in with your Google shoe account"
 				onPress={handleLogin}
 				buttonStyle={styles.button}
 			/>

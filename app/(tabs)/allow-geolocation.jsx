@@ -7,7 +7,7 @@ import {
 	Alert,
 	Platform,
 } from "react-native";
-import * as Location from "expo-location"; // If using Expo
+// import * as Location from "expo-location"; // If using Expo
 
 export default function AllowGeolocation({ navigation }) {
 	const [location, setLocation] = useState(null);
