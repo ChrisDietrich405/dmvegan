@@ -1,5 +1,4 @@
 package com.anonymous.dmvegan
-
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
@@ -12,29 +11,16 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate
 
 import expo.modules.ReactActivityDelegateWrapper
 
-// Import Google Sign-In dependencies
-import com.reactnativegooglesignin.RNGoogleSigninPackage
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-
 class MainActivity : ReactActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     // Set the theme to AppTheme BEFORE onCreate to support
     // coloring the background, status bar, and navigation bar.
     // This is required for expo-splash-screen.
+    // setTheme(R.style.AppTheme);
     // @generated begin expo-splashscreen - expo prebuild (DO NOT MODIFY) sync-f3ff59a738c56c9a6119210cb55f0b613eb8b6af
     SplashScreenManager.registerOnActivity(this)
     // @generated end expo-splashscreen
-
     super.onCreate(null)
-
-    // Initialize Google Sign-In
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken("870172615730-ehosafbm1g9toc4heedh1hrnafb3puqa.apps.googleusercontent.com") // Add your `client_id` from google-services.json
-        .requestEmail()
-        .build()
-
-    val googleSignInClient = GoogleSignIn.getClient(this, gso)
   }
 
   /**
