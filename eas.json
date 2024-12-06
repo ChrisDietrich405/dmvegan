@@ -1,10 +1,6 @@
 {
 	"build": {
-		"production": {
-			"ios": {
-				"distribution": "store",
-				"buildType": "release"
-			},
+		"development": {
 			"android": {
 				"buildType": "apk"
 			}

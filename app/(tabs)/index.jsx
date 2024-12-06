@@ -8,6 +8,8 @@
 //npm run android - it builds a new apk file and also updates any changes I made and then runs the app in the emulator
 //https://console.cloud.google.com/welcome?_gl=1*9p20w8*_up*MQ..&gclid=CjwKCAiA9bq6BhAKEiwAH6bqoAO6rAOOXBEcSKgKi4KUCXwwI5eQjANCTicRj5KDnauuo-tCfV1kShoCCmoQAvD_BwE&inv=1&invt=AbjLAg&project=dmvegans-443020
 
+// keystore build-credentials-12-6 (Default)
+// C3:8D:C7:1E:AC:D0:16:03:E4:6E:A9:73:99:FE:95:74:FF:66:24:7A
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Input, Button, Icon, CheckBox } from "@rneui/themed";
